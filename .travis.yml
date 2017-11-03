@@ -1,0 +1,13 @@
+sudo: required
+
+services:
+  - docker
+  
+before_install:
+  - docker build -t r2cloud/it .
+  
+after_success:
+  - if [ "$TRAVIS_BRANCH" == "master" ]; then
+    docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
+    docker push r2cloud/it;
+    fi
