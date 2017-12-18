@@ -4,6 +4,6 @@ ENV INITSYSTEM=on
 ENV JAVA_VERSION=8u151-b12-1~deb9u1
 
 RUN curl -s https://packagecloud.io/install/repositories/dernasherbrezon/r2cloud/script.deb.sh | sudo bash \
-    && apt-get update && apt -f install sox=14.4.1-5+b2 ca-certificates-java=20161130+nmu1 openjdk-8-jre-headless=${JAVA_VERSION} openjdk-8-jdk-headless=${JAVA_VERSION} openjdk-8-jre=${JAVA_VERSION} openjdk-8-jdk=${JAVA_VERSION} \
+    && apt-get update && apt -f install sox=14.4.1-5+b2 ca-certificates-java=20170531+nmu1 openjdk-8-jre-headless=${JAVA_VERSION} openjdk-8-jdk-headless=${JAVA_VERSION} openjdk-8-jre=${JAVA_VERSION} openjdk-8-jdk=${JAVA_VERSION} \
     && apt clean \
     && rm -rf /var/lib/apt/lists/*
