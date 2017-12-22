@@ -2,9 +2,9 @@ FROM resin/armv7hf-debian:stretch
 
 ENV INITSYSTEM=on
 
-RUN curl -s https://packagecloud.io/install/repositories/dernasherbrezon/r2cloud/script.deb.sh -o script.sh \
-    && chmod +x script.sh \
-    && sudo os=raspbian dist=stretch ./script.sh \
-    && apt-get update && apt-get install sox=14.4.1-5+b2 ejdk-8-full=20171217161916 \
+RUN gpg --keyserver keyserver.ubuntu.com --recv-keys 27679FBF \
+    && gpg --armor --export 27679FBF | sudo apt-key add - \
+    && bash -c "echo 'deb [arch=armhf] http://s3.amazonaws.com/r2cloud r2cloud main' > /etc/apt/sources.list.d/r2cloud.list" \
+    && apt-get update && apt-get install sox=14.4.1-5+b2 ejdk-8-full=20171222144935 wxtoimg=2.11.2 \
     && apt clean \
     && rm -rf /var/lib/apt/lists/*
