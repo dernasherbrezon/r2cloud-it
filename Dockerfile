@@ -2,6 +2,9 @@ FROM balenalib/armv7hf-debian:stretch-20201211
 
 ENV INITSYSTEM=on
 
+COPY modprobe /usr/bin/
+COPY systemctl /usr/bin/
+
 RUN gpg --keyserver keyserver.ubuntu.com --recv-keys A5A70917 \
     && gpg --armor --export A5A70917 | sudo apt-key add - \
     && bash -c "echo 'deb http://s3.amazonaws.com/r2cloud stretch main' > /etc/apt/sources.list.d/r2cloud.list" \
