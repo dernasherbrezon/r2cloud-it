@@ -4,6 +4,7 @@ ENV INITSYSTEM=on
 
 COPY modprobe /usr/bin/
 COPY systemctl /usr/bin/
+COPY systemd-tmpfiles /usr/bin/
 
 RUN gpg --keyserver keyserver.ubuntu.com --recv-keys A5A70917 \
     && gpg --armor --export A5A70917 | sudo apt-key add - \
