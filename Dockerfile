@@ -1,4 +1,4 @@
-FROM balenalib/armv7hf-debian:bullseye-20230502
+FROM balenalib/armv7hf-debian:bookworm-20250401
 
 ENV INITSYSTEM=on
 
@@ -6,7 +6,7 @@ COPY modprobe /usr/bin/
 
 RUN gpg --keyserver keyserver.ubuntu.com --recv-keys A5A70917 \
     && gpg --armor --export A5A70917 | sudo apt-key add - \
-    && bash -c "echo 'deb http://s3.amazonaws.com/r2cloud bullseye main' > /etc/apt/sources.list.d/r2cloud.list" \
+    && bash -c "echo 'deb http://s3.amazonaws.com/r2cloud bookworm main' > /etc/apt/sources.list.d/r2cloud.list" \
     && apt-get update && apt-get install systemd sox r2cloud-jdk=17.0.5-3 wxtoimg=2.11.2-1 \
     && apt clean \
     && rm -rf /var/lib/apt/lists/* \
